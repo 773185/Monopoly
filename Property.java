@@ -22,6 +22,7 @@ public class Property {
     private int price;
     
     public Property(String placename1,String color1, int square1,int row1,int numhouses1,int numhotels1,int rentbasic1, int cost1){
+        super(false);
         placename=placename1;
         color=color1;
         square=square1;
