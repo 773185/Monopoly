@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package monopoly;
+
+/**
+ *
+ * @author 761843
+ */
+public class Player {
+    private int playernum;
+    private String name;
+    private String piecename;
+    private int bank;
+    
+    private int space;
+    public Player(String name1, int position, String piece){
+        playernum=position;
+        name=name1;
+        piecename=piece;
+        bank = 1000;
+        space=1;
+    }
+    
+    public int getMoney(){
+        return bank;
+    }
+    public String toString(){
+        return "Player"+playernum+" is "+name+" and they currently have "+bank+" Swanny dollars";
+    }
+    public void move(int roll){
+        space= space + roll;
+        if(space>40){
+            space=space-40;
+        }
+    }
+    public int getPosition(){
+        return space;
+    }
+}
