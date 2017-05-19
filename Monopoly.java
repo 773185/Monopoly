@@ -68,10 +68,10 @@ public class Monopoly {
                 p1.move(roll);
                 System.out.println("You are on square "+p1.getPosition());
                 System.out.println(Board.getSpace(p1.getPosition()));
-            // if(aProperty.isInstance(Board.getSpace(p1.getPosition()))){
+             if(Board.whatSpace(p1.getPosition()) instanceof Property){
                     if(!Board.whatSpace(p1.getPosition()).isowned()){
                         System.out.println("check");
-                //  }
+                  }
                 System.out.println("");
                 }
                 if(d1.getFaceValue()==d2.getFaceValue()){
@@ -95,3 +95,4 @@ public class Monopoly {
     
         }
     
+
