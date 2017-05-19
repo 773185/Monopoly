@@ -9,9 +9,24 @@ package monopoly;
  *
  * @author 761843
  */
-public class BoardSpace extends Board{
+//boolean spec
+public class BoardSpace extends Board {
+
     private boolean special;
-    public BoardSpace(boolean spec){
-        special=spec;
+
+    public BoardSpace() {
+        //special=spec;
+    }
+
+    public String toString() {
+        if (special) {
+            return "This space is special.";
+        } else {
+            return "Not special.";
+        }
+    }
+
+    boolean isowned() {
+        return true;
     }
 }
