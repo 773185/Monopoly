@@ -53,16 +53,27 @@ public class Monopoly {
        int turn = 1;
        boolean rollpermission=true;
        int roll=0;
-      
+       Property test = new Property("test","test",1,1,1,1,1);
+       Class aProperty = test.getClass();
       // Board b1 = new Board();   //THIS IS THE PROBLEM
       
         while(play){
-            int doubles=0;
+            
             while(turn==1){
+                int doubles=0;
                 if(rollpermission){
                 roll= d1.roll()+d2.roll();
                     System.out.println("you rolled a "+roll);
                 rollpermission=false;
+                p1.move(roll);
+                System.out.println("You are on square "+p1.getPosition());
+                System.out.println(Board.getSpace(p1.getPosition()));
+            // if(aProperty.isInstance(Board.getSpace(p1.getPosition()))){
+                    if(!Board.whatSpace(p1.getPosition()).isowned()){
+                        System.out.println("check");
+                //  }
+                System.out.println("");
+                }
                 if(d1.getFaceValue()==d2.getFaceValue()){
                     doubles++;
                     rollpermission=true;
@@ -70,12 +81,11 @@ public class Monopoly {
                         System.out.println("GO TO JAIL!");
                     }
                 }
-                p1.move(roll);
+                
               }
                
-                System.out.println("You are on square "+p1.getPosition());
-                System.out.println(Board.getSpace(p1.getPosition()));
                 
+                turn++;
            }
         }
    
@@ -83,4 +93,5 @@ public class Monopoly {
     
     }
     
-}
+        }
+    
