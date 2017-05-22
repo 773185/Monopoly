@@ -45,5 +45,24 @@ public String toString(){
     }
     
 }
+public int getPrice(){
+    return price;
+}
+public void setTrue(){
+    owned=true;
+}
+public int getRent(){
+    return rentbasic+rentbasic*numhouses+rentbasic*40*numhotels; 
+}
+public void addhouse(){
+    if(numhotels!=1){
+    numhouses++;
+    if(numhouses==5){
+        numhotels=1;
+        numhouses=0;
+    }
+  }
 }
 
+
+}
