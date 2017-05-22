@@ -29,4 +29,12 @@ public class BoardSpace extends Board {
     boolean isowned() {
         return true;
     }
+    public int getPrice(){
+        return 0;
+    }
+    public void setTrue(){ 
+    }
+    public int getRent(){
+        return 0;
+    }
 }
