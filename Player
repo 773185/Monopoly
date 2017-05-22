@@ -2,6 +2,10 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package monopoly;
 
@@ -14,8 +18,8 @@ public class Player {
     private String name;
     private String piecename;
     private int bank;
-    
     private int space;
+    
     public Player(String name1, int position, String piece){
         playernum=position;
         name=name1;
@@ -38,5 +42,17 @@ public class Player {
     }
     public int getPosition(){
         return space;
+    }
+    public void changemoney(int a){
+        if(a>bank){
+            System.out.println("You can't make that purchase. You only have "+bank+" Swanny Dollars remaining.");
+        }else{
+            bank = bank-a;
+            System.out.println("Congrats you purchased the property. You have "+ bank+" Swanny Dollars remaining.");
+        }
+        
+    }
+    public void earnrent(int a){
+        bank = bank +a;
     }
 }
