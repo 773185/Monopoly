@@ -10,12 +10,17 @@ package monopoly;
  * @author 761843
  */
 public class Chance extends carddraw{
-    private String[] card;
+    private static String[] card;
     public Chance(){
-    String[] cards= new String[3];    
-    cards[0]="Get Money";
-    cards[1]="Get Taxed";
-    cards[2]="Get Reimbursed";
+    String[] cards= new String[4];    
+    cards[0]="Advance to Go";
+    cards[1]="Pay poor tax of $15 ";
+    cards[2]="You have won a crossword competition - Collect $100";
+    cards[3]="Make general repairs on all your property – For each house pay $25";
     card=cards;
+    }
+    public static String drawcard(){
+        int c= (int)(Math.random()*4);
+        return card[c];
     }
 }
