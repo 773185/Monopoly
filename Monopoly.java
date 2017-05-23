@@ -10,6 +10,7 @@ package monopoly;
  * @author 761843
  */
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Monopoly {
 
@@ -20,6 +21,13 @@ public class Monopoly {
         // TODO code application logic here
         Die d1 = new Die();
         Die d2 = new Die();
+
+        ArrayList<BoardSpace> p1props = new ArrayList<BoardSpace>();
+        ArrayList<BoardSpace> p2props = new ArrayList<BoardSpace>();
+        ArrayList<BoardSpace> p3props = new ArrayList<BoardSpace>();
+        ArrayList<BoardSpace> p4props = new ArrayList<BoardSpace>();
+        
+       
 
         Scanner scan = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
@@ -57,39 +65,43 @@ public class Monopoly {
         Property test = new Property("test", "test", 1, 1, 1, 1, 1);
         Class aProperty = test.getClass();
         // Board b1 = new Board();   //THIS IS THE PROBLEM
-        
+
         while (play) {
 
             while (turn == 1) {
-                
+
                 int doubles = 0;
                 if (rollpermission) {
                     roll = d1.roll() + d2.roll();
-                    System.out.println("you rolled a " + d1.getFaceValue()+" and a "+d2.getFaceValue()+".");
+                    System.out.println("you rolled a " + d1.getFaceValue() + " and a " + d2.getFaceValue() + ".");
                     rollpermission = false;
                     p1.move(roll);
                     System.out.println("You are on square " + p1.getPosition());
                     System.out.println(Board.getSpace(p1.getPosition()));
                     if (Board.whatSpace(p1.getPosition()) instanceof Property) {
                         if (!Board.whatSpace(p1.getPosition()).isowned()) {
-                            System.out.println("Would you like to purchase this property for "+Board.whatSpace(p1.getPosition()).getPrice()+"? (y/n)");
-                            String purchase= scan.next();
-                            if(purchase.equalsIgnoreCase("y")){
-                                Board.whatSpace(p1.getPosition()).setTrue();
-                                p1.changemoney(Board.whatSpace(p1.getPosition()).getPrice());
-                                if(Board.whatSpace(p1.getPosition()).getPrice()>p1.getMoney()){
+                            System.out.println("Would you like to purchase this property for " + Board.whatSpace(p1.getPosition()).getPrice() + "? (y/n)");
+                            String purchase = scan.next();
+                            if (purchase.equalsIgnoreCase("y")) {
+                                if (Board.whatSpace(p1.getPosition()).getPrice() > p1.getMoney()) {
+                                    System.out.println("You don't have enough money Chump. ");
                                     //AUCTION!!!!!!!
+                                } else {
+                                    p1.changemoney(Board.whatSpace(p1.getPosition()).getPrice());
+                                    Board.whatSpace(p1.getPosition()).setTrue();
+                                    p1props.add(Board.whatSpace(p1.getPosition()));
                                 }
-                                else{
-                                    System.out.println("Alright it is going to Auction.");
-                                    //AUCTION!!!!!!
-                                }
+
+                            } else {
+                                System.out.println("Alright it is going to Auction.");
+                                //AUCTION!!!!!!
                             }
-                        }else{
-                            System.out.println("You have to pay "+Board.whatSpace(p1.getPosition()).getRent());
-                            
+
+                        } else {
+                            System.out.println("You have to pay " + Board.whatSpace(p1.getPosition()).getRent());
+
                         }
-                        
+
                     }
                     if (d1.getFaceValue() == d2.getFaceValue()) {
                         doubles++;
@@ -106,5 +118,7 @@ public class Monopoly {
                 }
             }
         }
+
     }
+
 }
