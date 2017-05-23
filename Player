@@ -2,10 +2,6 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
  */
 package monopoly;
 
@@ -38,7 +34,11 @@ public class Player {
         space= space + roll;
         if(space>40){
             space=space-40;
+            bank=bank+200;
         }
+    }
+    public void moveTo(int square){
+        space=square;
     }
     public int getPosition(){
         return space;
@@ -54,5 +54,43 @@ public class Player {
     }
     public void earnrent(int a){
         bank = bank +a;
+    }
+    
+    public void houseTax(){
+        Board.whatSpace(this.getPosition());
+    }
+    
+    public void chance(String c){
+        if(c.equalsIgnoreCase("Advance to Go")){
+            this.moveTo(1);
+            bank=bank+200;
+        }
+        if(c.equalsIgnoreCase("Pay poor tax of $15 ")){
+            bank=bank-15;
+        }
+        if(c.equalsIgnoreCase("You have won a crossword competition - Collect $100")){
+            bank=bank+100;
+        }
+        if(c.equalsIgnoreCase("Make general repairs on all your property – For each house pay $25")){
+           this.houseTax();
+        }
+        
+    }
+
+    public void CommunityChest(String c){
+        if(c.equalsIgnoreCase("Advance to Go")){
+            this.moveTo(1);
+            bank=bank+200;
+        }
+        if(c.equalsIgnoreCase("Bank error in your favor – Collect $200")){
+            bank=bank+200;
+        }
+        if(c.equalsIgnoreCase("Doctor's fees – Pay $50")){
+            bank=bank-50;
+        }
+        if(c.equalsIgnoreCase("Pay school fees of $150")){
+           bank=bank-150;
+        }
+        
     }
 }
