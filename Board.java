@@ -14,7 +14,7 @@ public class Board{
     //public Property(String placename1,String color1, int square1,int numhouses1,int numhotels1,int rentbasic1, int cost1){
    
    
-   static Property MediterraneanAve = new Property("Boardwalk", "Brown", 2, 0, 0, 2, 50);
+   static Property MediterraneanAve = new Property("Mediterranean Avenue", "Brown", 2, 0, 0, 2, 50);
    static Property BalticAve = new Property("Baltic Ave", "Brown", 4, 0, 0, 4, 50);
   static  Property OrientalAve = new Property("Oriental Ave", "Light-Blue", 7,0, 0, 6, 100);
    static Property VermontAve = new Property("Vermont Ave", "Light-Blue", 9,0, 0, 6, 100);
@@ -97,5 +97,3 @@ return "You have landed on"+ Board.getSpace(spot).toString();
 
 
 }
-
-
