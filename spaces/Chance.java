@@ -12,6 +12,7 @@ package monopoly;
 public class Chance extends carddraw{
     private static String[] card;
     public Chance(){
+        super("Chance");
     String[] cards= new String[4];    
     cards[0]="Advance to Go";
     cards[1]="Pay poor tax of $15 ";
