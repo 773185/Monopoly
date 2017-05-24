@@ -12,7 +12,7 @@ package monopoly;
 public class Railroads extends BoardSpace {
     private int purchasePrice,baseRent, total;
     public Railroads(String name) {
-        super(n);
+        super(name);
         purchasePrice=200;
         baseRent=25;
         total=baseRent;
