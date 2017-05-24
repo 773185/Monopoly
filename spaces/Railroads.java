@@ -10,12 +10,19 @@ package monopoly;
  * @author 761843
  */
 public class Railroads extends BoardSpace {
-    public int price=200;
-    public int rent=25;
-    public String title;
+    private int purchasePrice,baseRent, total;
     public Railroads(String name) {
-        super(true);
-        title=name;
+        super(n);
+        purchasePrice=200;
+        baseRent=25;
+        total=baseRent;
     }
     
+    public void changeRent(int a){
+        total=baseRent*a;
+    }
+    
+    public String toString(){
+        return super.toString()+"rent is $"+total;
+    }
 }
