@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 package monopoly;
-
+import java.util.*;
 /**
  *
  * @author 761843
  */
 public class Player {
+    public static int highBid;
     private int playernum;
     private String name;
     private String piecename;
     private int bank;
     private int space;
+    Scanner scan = new Scanner(System.in);
     
     public Player(String name1, int position, String piece){
         playernum=position;
@@ -93,4 +95,31 @@ public class Player {
         }
         
     }
-}
+    
+    public static void changeHighBid(int change){
+        highBid=change;
+    }
+    public boolean makebid(){
+        int bid;
+        System.out.println("How much do you want to bid?");
+        bid= scan.nextInt();
+        if(checkbid(highBid, bid)){
+            highBid=bid;
+            System.out.println("Highest bid is $"+highBid);
+            return true;
+        }
+        else{
+            System.out.println("You cannot make this bid");
+            return false;
+        }  
+    }
+    
+    
+    public boolean checkbid(int highbid, int bid){
+        if(bid>highbid && bid<bank){
+            return true;}
+        else return false;
+        }
+    }
+
+
