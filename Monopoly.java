@@ -21,6 +21,8 @@ public class Monopoly {
         // TODO code application logic here
         Die d1 = new Die();
         Die d2 = new Die();
+        
+        boolean auction;
 
         ArrayList<BoardSpace> p1props = new ArrayList<BoardSpace>();
         ArrayList<BoardSpace> p2props = new ArrayList<BoardSpace>();
@@ -65,7 +67,7 @@ public class Monopoly {
         Property test = new Property("test", "test", 1, 1, 1, 1, 1);
         Class aProperty = test.getClass();
         // Board b1 = new Board();   //THIS IS THE PROBLEM
-
+boolean b1,b2,b3,b4;
         while (play) {
 
             while (turn == 1) {
@@ -85,7 +87,27 @@ public class Monopoly {
                             if (purchase.equalsIgnoreCase("y")) {
                                 if (Board.whatSpace(p1.getPosition()).getPrice() > p1.getMoney()) {
                                     System.out.println("You don't have enough money Chump. ");
-                                    //AUCTION!!!!!!!
+                                    auction=true;
+                                    Player.changeHighBid(0);
+                                    int count=1;
+                                    while(auction){
+
+                                        System.out.println("Player "+count+" would you like to make a bid? y/n");
+                                        if(scan.next().equalsIgnoreCase("y")){
+                                            if(count==1){
+                                            p1.makebid();
+                                            count++;
+                                            }else{
+                                                if(count==2){
+                                                p2.makebid();
+                                                count--;
+                                            }
+                                            }
+                                           
+                                            
+                                        }
+                                        
+                                    }
                                 } else {
                                     p1.changemoney(Board.whatSpace(p1.getPosition()).getPrice());
                                     Board.whatSpace(p1.getPosition()).setTrue();
@@ -94,7 +116,10 @@ public class Monopoly {
 
                             } else {
                                 System.out.println("Alright it is going to Auction.");
-                                //AUCTION!!!!!!
+                                auction=true;
+                                while(auction){
+                                    
+                                }
                             }
 
                         } else {
