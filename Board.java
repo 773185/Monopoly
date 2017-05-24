@@ -50,8 +50,8 @@ public class Board{
   static  Chance chance2 = new Chance();
   static  Chance chance3 = new Chance();
    
-  static  Utilities electric = new Utilities();
-  static  Utilities water = new Utilities();
+  static  Utilities electric = new Utilities("Electric Company");
+  static  Utilities water = new Utilities("Water Works");
    
   static  Fines incometax = new Fines(200);
  static   Fines luxurytax = new Fines(100);
