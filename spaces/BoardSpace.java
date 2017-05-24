@@ -13,9 +13,11 @@ package monopoly;
 public class BoardSpace extends Board {
 
     private boolean special;
+    private String name;
 
-    public BoardSpace() {
+    public BoardSpace(String n) {
         //special=spec;
+        name=n;
     }
 
     public String toString() {
