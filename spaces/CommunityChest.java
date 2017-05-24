@@ -12,6 +12,7 @@ package monopoly;
 public class CommunityChest extends carddraw{
    private static String[] card;
     public CommunityChest(){
+        super("Community Chest");
     String[] cards= new String[4];    
     cards[0]="Advance to Go";
     cards[1]="Doctor's fees – Pay $50";
