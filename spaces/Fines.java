@@ -12,8 +12,10 @@ package monopoly;
 public class Fines extends BoardSpace {
     private int cost;
     public Fines(int amount) {
-        super(true);
+        //super(true);
+        super("Pay Money");
         cost = amount;
     }
     
 }
+
