@@ -21,15 +21,13 @@ public class Monopoly {
         // TODO code application logic here
         Die d1 = new Die();
         Die d2 = new Die();
-        
+
         boolean auction;
 
         ArrayList<BoardSpace> p1props = new ArrayList<BoardSpace>();
         ArrayList<BoardSpace> p2props = new ArrayList<BoardSpace>();
         ArrayList<BoardSpace> p3props = new ArrayList<BoardSpace>();
         ArrayList<BoardSpace> p4props = new ArrayList<BoardSpace>();
-        
-       
 
         Scanner scan = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
@@ -67,7 +65,7 @@ public class Monopoly {
         Property test = new Property("test", "test", 1, 1, 1, 1, 1);
         Class aProperty = test.getClass();
         // Board b1 = new Board();   //THIS IS THE PROBLEM
-boolean b1,b2,b3,b4;
+
         while (play) {
 
             while (turn == 1) {
@@ -77,6 +75,16 @@ boolean b1,b2,b3,b4;
                     roll = d1.roll() + d2.roll();
                     System.out.println("you rolled a " + d1.getFaceValue() + " and a " + d2.getFaceValue() + ".");
                     rollpermission = false;
+                    if (6==6) {
+                                //d1.getFaceValue() == d2.getFaceValue()
+                                doubles++;
+                                System.out.println("Because you rolled doubles, you get to roll again. Grats man. ");
+                                rollpermission = true;
+                                if (doubles == 3) {
+                                    System.out.println("GO TO JAIL!");
+                                    turn++;
+                                }
+                            }
                     p1.move(roll);
                     System.out.println("You are on square " + p1.getPosition());
                     System.out.println(Board.getSpace(p1.getPosition()));
@@ -87,63 +95,94 @@ boolean b1,b2,b3,b4;
                             if (purchase.equalsIgnoreCase("y")) {
                                 if (Board.whatSpace(p1.getPosition()).getPrice() > p1.getMoney()) {
                                     System.out.println("You don't have enough money Chump. ");
-                                    auction=true;
+                                    auction = true;
                                     Player.changeHighBid(0);
-                                    int count=1;
-                                    while(auction){
+                                    int count = 1;
+                                    while (auction) {
 
-                                        System.out.println("Player "+count+" would you like to make a bid? y/n");
-                                        if(scan.next().equalsIgnoreCase("y")){
-                                            if(count==1){
+                                       System.out.println("Player " + count + " would you like to make a bid? y/n");
+                                    if (scan.next().equalsIgnoreCase("y")) {
+                                        if (count == 1) {
                                             p1.makebid();
                                             count++;
-                                            }else{
-                                                if(count==2){
-                                                p2.makebid();
-                                                count--;
-                                            }
-                                            }
-                                           
-                                            
+                                        } else if (count == 2) {
+                                            p2.makebid();
+                                            count--;
+
                                         }
-                                        
+                                    
+                                    }else{
+                                        if (count == 1) {
+                                            System.out.println("Player 2 has earned the property for "+Player.getHighBid());
+                                          p2.changeBank(-Player.getHighBid());
+                                          auction=false;
+                                         
+                                        } else if (count == 2) {
+                                            System.out.println("Player 1 has earned the property for "+Player.getHighBid());
+                                            p1.changeBank(-Player.getHighBid());
+                                            auction=false;
+                                           
+                                    }
+                                    }
+                                
+                                   
                                     }
                                 } else {
                                     p1.changemoney(Board.whatSpace(p1.getPosition()).getPrice());
                                     Board.whatSpace(p1.getPosition()).setTrue();
                                     p1props.add(Board.whatSpace(p1.getPosition()));
+                                 
+                                    //Possession!!!!!!!!!!!
                                 }
 
                             } else {
                                 System.out.println("Alright it is going to Auction.");
-                                auction=true;
-                                while(auction){
+                                auction = true;
+                                Player.changeHighBid(0);
+                                int count = 1;
+                                while (auction) {
+                                    System.out.println("Player " + count + " would you like to make a bid? y/n");
+                                    if (scan.next().equalsIgnoreCase("y")) {
+                                        if (count == 1) {
+                                            p1.makebid();
+                                            count++;
+                                        } else if (count == 2) {
+                                            p2.makebid();
+                                            count--;
+
+                                        }
                                     
+                                    }else{
+                                        if (count == 1) {
+                                            System.out.println("Player 2 has earned the property for "+Player.getHighBid());
+                                          p2.changeBank(-Player.getHighBid());
+                                          auction=false;
+                                          
+                                        } else if (count == 2) {
+                                            System.out.println("Player 1 has earned the property for "+Player.getHighBid());
+                                            p1.changeBank(-Player.getHighBid());
+                                            auction=false;
+                                            
+                                    }
+                                    }
+                                }
+                                    
+                            }
+                                    
+                                    } else {
+                                        System.out.println("You have to pay " + Board.whatSpace(p1.getPosition()).getRent());
+                                        p1.changeBank(-Board.whatSpace(p1.getPosition()).getRent());
+                                    }
                                 }
                             }
-
-                        } else {
-                            System.out.println("You have to pay " + Board.whatSpace(p1.getPosition()).getRent());
-
-                        }
-
-                    }
-                    if (d1.getFaceValue() == d2.getFaceValue()) {
-                        doubles++;
-                        rollpermission = true;
-                        if (doubles == 3) {
-                            System.out.println("GO TO JAIL!");
-                        }
-                    }
-
-                }
-
-                if (!rollpermission) {
-                    turn++;
-                }
-            }
+                            
+                            if (!rollpermission) {
+                                System.out.println("Your turn is over.");
+                            turn++;
+                      }
+                  }
+              }
         }
 
-    }
-
 }
+
