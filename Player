@@ -45,6 +45,9 @@ public class Player {
     public int getPosition(){
         return space;
     }
+    public void changeBank(int a){
+        bank= bank+a;
+    }
     public void changemoney(int a){
         if(a>bank){
             System.out.println("You can't make that purchase. You only have "+bank+" Swanny Dollars remaining.");
@@ -99,6 +102,9 @@ public class Player {
     public static void changeHighBid(int change){
         highBid=change;
     }
+    public static int getHighBid(){
+        return highBid;
+    }
     public boolean makebid(){
         int bid;
         System.out.println("How much do you want to bid?");
@@ -121,5 +127,4 @@ public class Player {
         else return false;
         }
     }
-
 
