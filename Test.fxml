@@ -5,10 +5,46 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1347.0" style="-fx-background-color: SKYBLUE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Button fx:id="btn2" layoutX="138.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleButtonACtion" text="Button" />
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" translateY="15.0" StackPane.alignment="TOP_CENTER">
+         <children>
+            <ImageView fitHeight="257.0" fitWidth="756.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+               <image>
+                  <Image url="file:/C:/Users/gunde_000/Desktop/Monopoly_pack_logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="58.0" prefWidth="142.0" spacing="25.0" translateY="110.0" StackPane.alignment="CENTER">
+         <children>
+            <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="721.0" />
+            <Button id="2Players" fx:id="player2" defaultButton="true" mnemonicParsing="false" onAction="#PlayerHandler" text="2 Players" translateY="-50.0" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Edwardian Script ITC" size="40.0" />
+               </font>
+            </Button>
+            <Button fx:id="player3" mnemonicParsing="false" onAction="#PlayerHandler" text="3 Players" translateY="-50.0">
+               <font>
+                  <Font name="Edwardian Script ITC" size="41.0" />
+               </font>
+            </Button>
+            <Button fx:id="player4" mnemonicParsing="false" onAction="#PlayerHandler" text="4 Players" translateY="-50.0">
+               <font>
+                  <Font name="Edwardian Script ITC" size="42.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
-</AnchorPane>
+</StackPane>
