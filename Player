@@ -13,7 +13,7 @@ public class Player {
     private Die D1 = new Die();
     private Die D2 = new Die();
     public static int highBid;
-    public static int highBid;
+    
     private int playernum, bank, space, daysInJail;
     private String name, piecename;
     Scanner scan = new Scanner(System.in);
