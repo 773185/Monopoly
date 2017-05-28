@@ -155,7 +155,8 @@ public class Monopoly {
                             p1.chance(CommunityChest.drawcommunitycard());
                         }
                         if(Board.whatSpace(p1.getPosition()) instanceof Railroads){
-                            //RAILROAD THINGS
+                            if(Board.whatSpace(p1.getPosition()).getOwned()){
+                            }
                         }
                         if(Board.whatSpace(p1.getPosition()) instanceof corner){
                             //CORNER THINGS
