@@ -44,4 +44,8 @@ public class BoardSpace extends Board {
     public String getOwner(){
         return "";
     }
+
+    public boolean getOwned() {//FOR RAILROADS
+        return true;
+    }
 }
