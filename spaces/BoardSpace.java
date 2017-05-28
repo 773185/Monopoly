@@ -38,6 +38,9 @@ public class BoardSpace extends Board {
     public int getRent(){
         return 0;
     }
+     public int getRent(int s, int g){
+        return 0;
+    }
     public void switchOwner(String n){
     }
 
