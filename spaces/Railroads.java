@@ -11,6 +11,7 @@ package monopoly;
  */
 public class Railroads extends BoardSpace {
     private int purchasePrice,baseRent, total;
+    private boolean owned=false;
     public Railroads(String name) {
         super(name);
         purchasePrice=200;
@@ -24,5 +25,11 @@ public class Railroads extends BoardSpace {
     
     public String toString(){
         return super.toString()+"rent is $"+total;
+    }
+    public void buy(){
+        owned=true;
+    }
+    public boolean getOwned(){
+        return owned;
     }
 }
