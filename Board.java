@@ -61,11 +61,15 @@ public class Board{
   static  Railroads Reading = new Railroads("Reading Railroad");
   static  Railroads Pennsylvania = new Railroads("Pennsylvania Railroad");
  static   Railroads Short = new Railroads("Short Line Railroad");
+    
+    static corner visitJail = new corner("Just Visiting");
+    static corner inJail = new corner("IN JAIL");
+    static corner goToJail = new corner("Go to Jail!");
+    static corner FreeParking = new corner("Free Parking");
    
-   public static ArrayList<BoardSpace> wholeboard = new ArrayList<BoardSpace>(Arrays.asList(GO, MediterraneanAve, chest1, BalticAve, incometax, BoRail, OrientalAve, chance1, VermontAve, ConnecticutAve,StCharlesPlace, StCharlesPlace, electric, StatesAve, 
-VirginiaAve, Reading, StJamesPlace, chest2, TennesseeAve, NewYorkAve,VentnorAve, KentuckyAve, chance2, IndianaAve, IllinoisAve, Pennsylvania, AtlanticAve, VentnorAve,
-water, MarvinGardens,VentnorAve, PacificAvenue, NorthCarolinaAve, chest3, PennsylvaniaAve, Short, chance3, ParkPlace, luxurytax, boardwalk));
-
+public static ArrayList<BoardSpace> wholeboard = new ArrayList<BoardSpace>(Arrays.asList(GO, MediterraneanAve, chest1, BalticAve, incometax, BoRail, OrientalAve, chance1, VermontAve, ConnecticutAve, visitJail, StCharlesPlace, electric, StatesAve,
+            VirginiaAve, Reading, StJamesPlace, chest2, TennesseeAve, NewYorkAve, FreeParking, KentuckyAve, chance2, IndianaAve, IllinoisAve, Pennsylvania, AtlanticAve, VentnorAve,
+            water, MarvinGardens, goToJail, PacificAvenue, NorthCarolinaAve, chest3, PennsylvaniaAve, Short, chance3, ParkPlace, luxurytax, boardwalk, inJail));
 
    //ArrayList<String> x = new ArrayList<String>();
    //List<String> x = new ArrayList<>(Arrays.asList("xyz", "abc"));
