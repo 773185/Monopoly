@@ -15,7 +15,7 @@ public class Property extends BoardSpace{
     private String placename;
     private String color;
     private int square;
-    
+    private String owner;
     private int numhouses;
     private int numhotels;
     private int rentbasic;
@@ -23,11 +23,11 @@ public class Property extends BoardSpace{
     private boolean owned;
     
     public Property(String placename1,String color1, int square1,int numhouses1,int numhotels1,int rentbasic1, int cost1){
-        //super(false);
+        super(placename1);
         placename=placename1;
         color=color1;
         square=square1;
-        
+        owner="";
         numhouses=numhouses1;
         numhotels=numhotels1;
         rentbasic=rentbasic1;
@@ -63,6 +63,17 @@ public void addhouse(){
     }
   }
 }
+
+
+        
+    public void switchOwner(String n){
+    owner=n;
+}
+
+public String getOwner(){
+    return owner;
+}
+
 
 
 }
