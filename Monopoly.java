@@ -119,7 +119,7 @@ public class Monopoly {
 
                                     }
                                 } else {
-                                    p1.changemoney(Board.whatSpace(p1.getPosition()).getPrice());
+                                    p1.buyProperty(Board.whatSpace(p1.getPosition()).getPrice());
                                     Board.whatSpace(p1.getPosition()).setTrue();
                                     Board.whatSpace(p1.getPosition()).switchOwner("p1");
 
