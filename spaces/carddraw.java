@@ -11,8 +11,8 @@ package monopoly;
  */
 public class carddraw extends BoardSpace{
 
-    public carddraw() {
-        super(true);
+    public carddraw(String n) {
+        super(n);
     }
  
     
