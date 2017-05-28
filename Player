@@ -10,12 +10,12 @@ import java.util.*;
  * @author 761843
  */
 public class Player {
+    private Die D1 = new Die();
+    private Die D2 = new Die();
     public static int highBid;
-    private int playernum;
-    private String name;
-    private String piecename;
-    private int bank;
-    private int space;
+    public static int highBid;
+    private int playernum, bank, space, daysInJail;
+    private String name, piecename;
     Scanner scan = new Scanner(System.in);
     
     public Player(String name1, int position, String piece){
@@ -32,11 +32,50 @@ public class Player {
     public String toString(){
         return "Player"+playernum+" is "+name+" and they currently have "+bank+" Swanny dollars";
     }
-    public void move(int roll){
-        space= space + roll;
-        if(space>40){
-            space=space-40;
-            bank=bank+200;
+    public void move(int d1, int d2) {
+        int roll = d1+d2;
+        if (space == 41 && daysInJail!=3) {           
+            if(d1==d2){
+                System.out.println("You got lucky, you got out of jail");
+                space = 1;
+                daysInJail=0;
+                move(d1, d2);
+            }
+            else{
+            System.out.println("You are in jail so you can't move");
+            System.out.println("Do you want to pay $50 to get out? (y/n)");
+            if(scan.next().equalsIgnoreCase("y")){
+                changeBank(50);
+                System.out.println("You are free! Roll again!");
+                int r1= D1.roll();
+                int r2= D2.roll();
+                move(r1, r2);
+            }
+            else
+            daysInJail++;
+            }
+        } 
+        else if(daysInJail==3){
+            System.out.println("You have spent 3 days in jail. Cough up $50");
+            changeBank(50);
+            space=11;
+            daysInJail=0;
+            System.out.println("You can now roll again");
+            int r1= D1.roll();
+            int r2= D2.roll();
+                move(r1, r2);
+        }
+        else {
+            space = space + roll;
+            if (space == 31) {
+                System.out.println("You have been incarcerated");
+                space = 41;
+            } else if (space == 41) {
+                space = 1;
+            } else if (space > 40) {
+                space = space - 40;
+                bank = bank + 200;
+            }
         }
     }
     public void moveTo(int square){
