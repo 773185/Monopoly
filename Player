@@ -46,7 +46,7 @@ public class Player {
         return space;
     }
     public void changeBank(int a){
-        bank= bank+a;
+        bank= bank-a;
     }
     public void changemoney(int a){
         if(a>bank){
@@ -58,7 +58,7 @@ public class Player {
         
     }
     public void earnrent(int a){
-        bank = bank +a;
+        bank = bank+a;
     }
     
     public void houseTax(){
@@ -127,4 +127,3 @@ public class Player {
         else return false;
         }
     }
-
