@@ -22,11 +22,7 @@ public class Monopoly {
         Die d1 = new Die();
         Die d2 = new Die();
         boolean auction;
-        ArrayList<BoardSpace> p1props = new ArrayList<BoardSpace>();
-        ArrayList<BoardSpace> p2props = new ArrayList<BoardSpace>();
-        ArrayList<BoardSpace> p3props = new ArrayList<BoardSpace>();
-        ArrayList<BoardSpace> p4props = new ArrayList<BoardSpace>();
-
+        
         Scanner scan = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
         System.out.println("How many players? (2-4)");
@@ -39,28 +35,13 @@ public class Monopoly {
         System.out.println("Player " + (2) + ", What is your name?");
         name = scan.next();
         Player p2 = new Player(name, 2, "Top Hat");
-
-        /* if(playernum==3){
-           System.out.println("Player "+(3)+", What is your name?");
-            name = scan.next();
-               Player p3 = new Player(name, 3, "Money Bags");
-           }
-            if(playernum==4){
-           System.out.println("Player "+(3)+", What is your name?");
-            name = scan.next();
-               Player p3 = new Player(name, 3, "Money Bags");
-               System.out.println("Player "+(3)+", What is your name?");
-            name = scan.next();
-           Player p4 = new Player(name, 4, "Race Car");
-           }        */
         System.out.println(p1.toString());
         System.out.println(p2.toString());
         boolean play = true;
         int turn = 1;
         boolean rollpermission = true;
         int roll;
-        Property test = new Property("test", "test", 1, 1, 1, 1, 1);
-        Class aProperty = test.getClass();
+        
         while (play) {
             while (turn == 1) {
                 System.out.println("_______________________________");
@@ -80,7 +61,7 @@ public class Monopoly {
                             turn++;
                         }
                     }
-                    p1.move(roll);
+                    p1.move(d1.getFaceValue(),d2.getFaceValue());
                     System.out.println("You are on square " + p1.getPosition());
                     System.out.println(Board.getSpace(p1.getPosition()));
                     if (Board.whatSpace(p1.getPosition()) instanceof Property) {
@@ -116,15 +97,12 @@ public class Monopoly {
                                                 Board.whatSpace(p1.getPosition()).switchOwner("p1");
                                             }
                                         }
-
                                     }
                                 } else {
                                     p1.buyProperty(Board.whatSpace(p1.getPosition()).getPrice());
                                     Board.whatSpace(p1.getPosition()).setTrue();
                                     Board.whatSpace(p1.getPosition()).switchOwner("p1");
-
                                 }
-
                             } else {
                                 System.out.println("Alright it is going to Auction.");
                                 auction = true;
@@ -168,6 +146,22 @@ public class Monopoly {
                                     }
                                 }
                             }
+                        }
+                    }else{
+                        if(Board.whatSpace(p1.getPosition()) instanceof Chance){
+                            p1.chance(Chance.drawcard());
+                        }
+                        if(Board.whatSpace(p1.getPosition()) instanceof CommunityChest){
+                            p1.chance(CommunityChest.drawcommunitycard());
+                        }
+                        if(Board.whatSpace(p1.getPosition()) instanceof Railroads){
+                            //RAILROAD THINGS
+                        }
+                        if(Board.whatSpace(p1.getPosition()) instanceof corner){
+                            //CORNER THINGS
+                        }
+                        if(Board.whatSpace(p1.getPosition()) instanceof Fines){
+                            //FINES THINGS
                         }
                     }
                 }
