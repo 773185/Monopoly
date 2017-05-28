@@ -48,7 +48,7 @@ public class Player {
     public void changeBank(int a){
         bank= bank-a;
     }
-    public void changemoney(int a){
+    public void buyProperty(int a){
         if(a>bank){
             System.out.println("You can't make that purchase. You only have "+bank+" Swanny Dollars remaining.");
         }else{
