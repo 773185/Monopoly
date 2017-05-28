@@ -27,16 +27,21 @@ public class BoardSpace extends Board {
             return "Not special.";
         }
     }
-
-    boolean isowned() {
+    boolean isowned(){
         return true;
     }
     public int getPrice(){
         return 0;
     }
-    public void setTrue(){ 
+    public void setTrue(){
     }
     public int getRent(){
         return 0;
+    }
+    public void switchOwner(String n){
+    }
+
+    public String getOwner(){
+        return "";
     }
 }
