@@ -64,6 +64,7 @@ public class Monopoly {
                     p1.move(d1.getFaceValue(),d2.getFaceValue());
                     System.out.println("You are on square " + p1.getPosition());
                     System.out.println(Board.getSpace(p1.getPosition()));
+                    
                     if (Board.whatSpace(p1.getPosition()) instanceof Property) {
                         if (!Board.whatSpace(p1.getPosition()).isowned()) {
                             System.out.println("Would you like to purchase this property for " + Board.whatSpace(p1.getPosition()).getPrice() + "? (y/n)");
@@ -147,16 +148,24 @@ public class Monopoly {
                                 }
                             }
                         }
-                    }else{
+                    }
+                    
+                    else{
+                        
                         if(Board.whatSpace(p1.getPosition()) instanceof Chance){
-                            p1.chance(Chance.drawcard());
+                            String c = Chance.drawcard();
+                            System.out.println("Chance! "+ c);
+                            p1.chance(c);
                         }
+                        
                         if(Board.whatSpace(p1.getPosition()) instanceof CommunityChest){
-                            p1.chance(CommunityChest.drawcommunitycard());
+                            String cc =CommunityChest.drawcommunitycard();
+                            System.out.println("Community Chest! "+cc);
+                            p1.chance(cc);
                         }
+                        
                         if(Board.whatSpace(p1.getPosition()) instanceof Railroads){
-                            if(Board.whatSpace(p1.getPosition()).getOwned()){
-                            }
+                            //RAILROAD THINGS
                         }
                         
                         if(Board.whatSpace(p1.getPosition()) instanceof Utilities){
@@ -249,12 +258,11 @@ public class Monopoly {
                             }
                         }
                         }
-                        
                         if(Board.whatSpace(p1.getPosition()) instanceof corner){
                             //CORNER THINGS
                         }
                         if(Board.whatSpace(p1.getPosition()) instanceof Fines){
-                            //FINES THINGS
+                            
                         }
                     }
                 }
