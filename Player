@@ -17,14 +17,15 @@ public class Player {
     private int playernum, bank, space, daysInJail;
     private String name, piecename;
     Scanner scan = new Scanner(System.in);
-    
-    public Player(String name1, int position, String piece){
-        playernum=position;
+    private int utilowned;
+    public Player(String name1, int pnum, String piece){
+        playernum=pnum;
         name=name1;
         piecename=piece;
         bank = 1000;
-        space=1;
+        space=0;
         railsowned=0;
+        utilowned=0;
     }
     
     public int getMoney(){
@@ -138,6 +139,12 @@ public class Player {
         }
         
     }
+    public void addUtil(){
+        utilowned++;
+    }
+    public int getUtil(){
+        return utilowned;
+    }
     
     public static void changeHighBid(int change){
         highBid=change;
@@ -167,8 +174,8 @@ public class Player {
         else return false;
         }
     
-    public void buyRail(){
-        bank=bank-200;
+    public void buyRail(int a){
+        bank=bank-a;
         railsowned++;
     }
     public int getRailsOwned(){
