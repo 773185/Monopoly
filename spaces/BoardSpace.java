@@ -54,4 +54,16 @@ public class BoardSpace extends Board {
     public int getTax(){
         return 0;
     }
+    
+    public boolean getOwned() {//FOR RAILROADS
+        return true;
+    }
+     public int getRailRent(int a){
+         return 0;
+     }
+
+    void buy() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
 }
