@@ -17,5 +17,9 @@ public class Fines extends BoardSpace {
         cost = amount;
     }
     
+    public int getTax(){
+        return cost;
+    }
+    
 }
 
