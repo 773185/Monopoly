@@ -43,11 +43,13 @@ public class Monopoly {
         int roll;
         
         while (play) {
+            
             while (turn == 1) {
-                System.out.println("_______________________________");
-                System.out.println("_______________________________");
+                
                 int doubles = 0;
                 if (rollpermission) {
+                    System.out.println("_______________________________");
+                    System.out.println("_______________________________");
                     roll = d1.roll() + d2.roll();
                     System.out.println("you rolled a " + d1.getFaceValue() + " and a " + d2.getFaceValue() + ".");
                     rollpermission = false;
@@ -64,7 +66,6 @@ public class Monopoly {
                     p1.move(d1.getFaceValue(),d2.getFaceValue());
                     System.out.println("You are on square " + p1.getPosition());
                     System.out.println(Board.getSpace(p1.getPosition()));
-                    
                     if (Board.whatSpace(p1.getPosition()) instanceof Property) {
                         if (!Board.whatSpace(p1.getPosition()).isowned()) {
                             System.out.println("Would you like to purchase this property for " + Board.whatSpace(p1.getPosition()).getPrice() + "? (y/n)");
@@ -148,10 +149,7 @@ public class Monopoly {
                                 }
                             }
                         }
-                    }
-                    
-                    else{
-                        
+                    }else{
                         if(Board.whatSpace(p1.getPosition()) instanceof Chance){
                             String c = Chance.drawcard();
                             System.out.println("Chance! "+ c);
@@ -163,10 +161,109 @@ public class Monopoly {
                             System.out.println("Community Chest! "+cc);
                             p1.chance(cc);
                         }
-                        
                         if(Board.whatSpace(p1.getPosition()) instanceof Railroads){
-                            //RAILROAD THINGS
+                            if(!Board.whatSpace(p1.getPosition()).getOwned()){
+                               
+                            System.out.println("Would you like to purchase this Railroad for $200? (y/n)");
+                            String purchase = scan.next();
+                            if (purchase.equalsIgnoreCase("y")) {
+                                if (200 > p1.getMoney()) {
+                                    System.out.println("You don't have enough money Chump. ");
+                                    auction = true;
+                                    Player.changeHighBid(0);
+                                    int count = 1;
+                                    while (auction) {
+                                        System.out.println("Player " + count + " would you like to make a bid? y/n");
+                                        if (scan.next().equalsIgnoreCase("y")) {
+                                            if (count == 1) {
+                                                p1.makebid();
+                                                count++;
+                                            } else if (count == 2) {
+                                                p2.makebid();
+                                                count--;
+                                            }
+                                        } else {
+                                            if (count == 1) {
+                                                System.out.println("Player 2 has earned the Railroad for " + Player.getHighBid());
+                                                p2.changeBank(Player.getHighBid());
+                                                auction = false;
+                                                Board.whatSpace(p1.getPosition()).switchOwner("p2");
+                                                p2.buyRail(Player.getHighBid());
+                                                Board.whatSpace(p1.getPosition()).buy();
+                                                
+                                            } else if (count == 2) {
+                                                System.out.println("Player 1 has earned the Railroad for " + Player.getHighBid());
+                                                p1.changeBank(Player.getHighBid());
+                                                auction = false;
+                                                Board.whatSpace(p1.getPosition()).switchOwner("p1");
+                                                p1.buyRail(Player.getHighBid());
+                                                Board.whatSpace(p1.getPosition()).buy();
+                                                
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    p1.buyRail(200);
+                                    Board.whatSpace(p1.getPosition()).setTrue();
+                                    Board.whatSpace(p1.getPosition()).switchOwner("p1");
+                                    
+                                    
+                                }
+                            } else {
+                                System.out.println("Alright it is going to Auction.");
+                                auction = true;
+                                Player.changeHighBid(0);
+                                int count = 1;
+                                while (auction) {
+                                    System.out.println("Player " + count + " would you like to make a bid? y/n");
+                                    if (scan.next().equalsIgnoreCase("y")) {
+                                        if (count == 1) {
+                                            p1.makebid();
+                                            count++;
+                                        } else if (count == 2) {
+                                            p2.makebid();
+                                            count--;
+                                        }
+                                    } else {
+                                        if (count == 1) {
+                                            System.out.println("Player 2 has earned the utility for " + Player.getHighBid());
+                                            p2.changeBank(-Player.getHighBid());
+                                            auction = false;
+                                            p2.buyRail(Player.getHighBid());
+                                                Board.whatSpace(p1.getPosition()).buy();
+                                        } else if (count == 2) {
+                                            System.out.println("Player 1 has earned the utility for " + Player.getHighBid());
+                                            p1.changeBank(-Player.getHighBid());
+                                            auction = false;
+                                            p1.buyRail(Player.getHighBid());
+                                                Board.whatSpace(p1.getPosition()).buy();
+                                                
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                               
+                            
+                            if (Board.whatSpace(p1.getPosition()).getOwner().equalsIgnoreCase("p1")) {
+                                if (turn == 2) {
+                                    System.out.println("Player one owns this property. ");
+                                    System.out.println("How many railroads does Player one own in total?");
+                                    playernum=scan.nextInt();
+                                    
+                                    p2.changeBank(Board.whatSpace(p2.getPosition()).getRailRent(playernum));
+                                    p1.earnrent(Board.whatSpace(p2.getPosition()).getRailRent(playernum));
+                                } else {
+                                    if (turn == 1) {
+                                        System.out.println("Feels like home");
+                                    }
+                                }
+                            }
                         }
+                        }
+                        
+                            
+                        
                         
                         if(Board.whatSpace(p1.getPosition()) instanceof Utilities){
                             if (!Board.whatSpace(p1.getPosition()).isowned()) {
@@ -258,21 +355,22 @@ public class Monopoly {
                             }
                         }
                         }
+                        
                         if(Board.whatSpace(p1.getPosition()) instanceof corner){
                             //CORNER THINGS
                         }
-                        
                         if(Board.whatSpace(p1.getPosition()) instanceof Fines){
-                            System.out.println("You must pay $"+Board.whatSpace(p1.getPosition()).getTax());
-                            p1.changeBank(Board.whatSpace(p1.getPosition()).getTax());
+                            //FINES THINGS
                         }
                     }
                 }
-                if (!rollpermission) {
+            
+                else {
                     System.out.println("Your turn is over.");
                     turn++;
                 }
             }
+            
         }
     }
 }
