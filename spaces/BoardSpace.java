@@ -51,4 +51,7 @@ public class BoardSpace extends Board {
     public boolean getOwned() {//FOR RAILROADS
         return true;
     }
+    public int getTax(){
+        return 0;
+    }
 }
