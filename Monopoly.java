@@ -261,8 +261,10 @@ public class Monopoly {
                         if(Board.whatSpace(p1.getPosition()) instanceof corner){
                             //CORNER THINGS
                         }
+                        
                         if(Board.whatSpace(p1.getPosition()) instanceof Fines){
-                            
+                            System.out.println("You must pay $"+Board.whatSpace(p1.getPosition()).getTax());
+                            p1.changeBank(Board.whatSpace(p1.getPosition()).getTax());
                         }
                     }
                 }
