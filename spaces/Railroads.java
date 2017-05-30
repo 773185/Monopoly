@@ -19,12 +19,24 @@ public class Railroads extends BoardSpace {
         total=baseRent;
     }
     
-    public void changeRent(int a){
-        total=baseRent*a;
+    public int getRailRent(int a){
+        if(a==1){
+            return 25;
+        } else{
+            if(a==2){
+                return 50;
+            }else{
+                if(a==3){
+                    return 100;
+                }else{
+                    return 200;
+                }
+            }
+        }
     }
     
     public String toString(){
-        return super.toString()+"rent is $"+total;
+        return super.toString()+" Rent is $"+total+". At the railroad. ";
     }
     public void buy(){
         owned=true;
@@ -32,4 +44,5 @@ public class Railroads extends BoardSpace {
     public boolean getOwned(){
         return owned;
     }
+   
 }
