@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monopoly.UserInputController">
+   <children>
+      <Button fx:id="okButton" layoutX="171.0" layoutY="235.0" mnemonicParsing="false" onAction="#okClicked" text="GO!@" />
+      <TextField fx:id="textField" layoutX="178.0" layoutY="119.0" />
+      <Label layoutX="52.0" layoutY="127.0" text="Username:" />
+   </children>
+</Pane>
