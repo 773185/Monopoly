@@ -18,7 +18,7 @@ public class Board{
    static Property BalticAve = new Property("Baltic Ave", "Brown", 4, 0, 0, 4, 50);
   static  Property OrientalAve = new Property("Oriental Ave", "Light-Blue", 7,0, 0, 6, 100);
    static Property VermontAve = new Property("Vermont Ave", "Light-Blue", 9,0, 0, 6, 100);
-  static  Property ConnecticutAve = new Property("Connecticut Ave", "Light-Blue", 10,0, 8, 50, 120);
+  static  Property ConnecticutAve = new Property("Connecticut Ave", "Light-Blue", 10,0, 0, 8, 120);
    
   static  Property StCharlesPlace = new Property("St. Charles Place", "Violet", 12,0, 0, 10, 140);
   static  Property StatesAve = new Property("States Ave", "Violet", 14, 0, 0, 10, 140);
