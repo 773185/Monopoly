@@ -139,7 +139,7 @@ public class Monopoly {
                             }
                         } else {
                             System.out.println("You have to pay " + Board.whatSpace(p1.getPosition()).getRent());
-                            if (Board.whatSpace(p1.getPosition()).getOwner().equalsIgnoreCase("p1")) {
+                           // if (Board.whatSpace(p1.getPosition()).getOwner().equalsIgnoreCase("p1")) {
                                 if (turn == 2) {
                                     System.out.println("Player one owns this property. ");
                                     p2.changeBank(Board.whatSpace(p2.getPosition()).getRent());
@@ -150,7 +150,7 @@ public class Monopoly {
                                     }
                                 }
                             }
-                        }
+                       // }
                     }else{
                         if(Board.whatSpace(p1.getPosition()) instanceof Chance){
                             String c = Chance.drawcard();
@@ -371,6 +371,10 @@ public class Monopoly {
                 else {
                     System.out.println("Your turn is overp1.");
                     turn++;
+                    if(p1.getMoney()<0){
+                        System.out.println("Player One, "+p1.getName()+" has lost the game. They are "+p1.getMoney()+" dollars in debt. ");
+                        play=false;
+                    }
                     rollpermission=true;
                     System.out.println("Player one has "+p1.getMoney()+" Dollars remaining.");
                 }
@@ -471,7 +475,7 @@ public class Monopoly {
                             }
                         } else {
                             System.out.println("You have to pay " + Board.whatSpace(p2.getPosition()).getRent());
-                            if (Board.whatSpace(p2.getPosition()).getOwner().equalsIgnoreCase("p2")) {
+                            //if (Board.whatSpace(p2.getPosition()).getOwner().equalsIgnoreCase("p2")) {
                                 if (turn == 2) {
                                     System.out.println("Player two owns this property. ");
                                     p1.changeBank(Board.whatSpace(p1.getPosition()).getRent());
@@ -482,7 +486,7 @@ public class Monopoly {
                                     }
                                 }
                             }
-                        }
+                        //}
                     }else{
                         if(Board.whatSpace(p2.getPosition()) instanceof Chance){
                             String c = Chance.drawcard();
@@ -703,13 +707,17 @@ public class Monopoly {
                 else {
                     System.out.println("Your turn is over.");
                     turn--;
+                    if(p2.getMoney()<0){
+                        System.out.println("Player Two, "+p2.getName()+" has lost the game. They are "+p2.getMoney()+" dollars in debt. ");
+                        play=false;
+                    }
                     rollpermission=true;
                     System.out.println("Player two has "+p2.getMoney()+" Dollars remaining.");
                 }
             }
             
         }
-
+//End TURN ONE
             
         }
     }
